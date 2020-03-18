@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 #Squadcast
-import sys
 import os
 import json
 import urllib.request
@@ -26,10 +25,7 @@ def post_to_url(url, payload):
 if __name__ == "__main__":
 
            print("Sending data to squadcast")
-           print('*----------------------------------*')
-           print(os.environ)
-           print('*----------------------------------*')
-           url="https://webhook.site/588ca9ca-6df1-4f46-a6bd-c8d258b7d37a"
+           url=os.environ["NOTIFY_PARAMETER_1"]
            source=os.environ["NOTIFY_WHAT"]
            hostName=os.environ["NOTIFY_HOSTNAME"]
            hostState=os.environ["NOTIFY_HOSTSTATE"]
