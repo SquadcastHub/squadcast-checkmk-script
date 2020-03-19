@@ -7,7 +7,7 @@ import urllib.request
 
 def form_payload(hostName = "",hostState = "",hostOutput = "",notifyDateTime = "",notificationType="",serviceDesc="",serviceOutput="",serviceState="",source="",hostNotifNumber="",serviceNotifNumber=""):
 
-    payload_rep = {"hostname" : hostName,"host_state":hostState,"hostOutput":hostOutput,"notifyDateTime":notifyDateTime,"notificationType":notificationType,"serviceDesc":serviceDesc,"serviceOutput":serviceOutput,"serviceState":serviceState,"source":source,"hostNotifNumber":hostNotifNumber,"serviceNotifNumber":serviceNotifNumber}
+    payload_rep = {"hostname" : hostName,"hostState":hostState,"hostOutput":hostOutput,"notifyDateTime":notifyDateTime,"notificationType":notificationType,"serviceDesc":serviceDesc,"serviceOutput":serviceOutput,"serviceState":serviceState,"source":source,"hostNotifNumber":hostNotifNumber,"serviceNotifNumber":serviceNotifNumber}
     return payload_rep
 
 def post_to_url(url, payload):
