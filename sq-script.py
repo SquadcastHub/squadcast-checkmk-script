@@ -5,9 +5,9 @@ import json
 import urllib.request
 
 
-def form_payload(hostName = "",hostState = "",hostOutput = "",notifyDateTime = "",notificationType="",serviceDesc="",serviceOutput="",serviceState="",source="",hostNotifNumber="",serviceNotifNumber=""):
+def form_payload(hostName = "",hostState = "",hostOutput = "",hostAddress= "",notifyDateTime = "",notificationType="",serviceDesc="",serviceOutput="",serviceState="",source="",hostNotifNumber="",serviceNotifNumber=""):
 
-    payload_rep = {"hostname" : hostName,"hostState":hostState,"hostOutput":hostOutput,"notifyDateTime":notifyDateTime,"notificationType":notificationType,"serviceDesc":serviceDesc,"serviceOutput":serviceOutput,"serviceState":serviceState,"source":source,"hostNotifNumber":hostNotifNumber,"serviceNotifNumber":serviceNotifNumber}
+    payload_rep = {"hostname" : hostName,"hostState":hostState,"hostOutput":hostOutput,"hostAddress":hostAddress,"notifyDateTime":notifyDateTime,"notificationType":notificationType,"serviceDesc":serviceDesc,"serviceOutput":serviceOutput,"serviceState":serviceState,"source":source,"hostNotifNumber":hostNotifNumber,"serviceNotifNumber":serviceNotifNumber}
     return payload_rep
 
 def post_to_url(url, payload):
@@ -37,5 +37,6 @@ if __name__ == "__main__":
            serviceOutput=os.environ["NOTIFY_SERVICEOUTPUT"]
            serviceState=os.environ["NOTIFY_SERVICESTATE"]
            serviceNotifNumber=os.environ["NOTIFY_SERVICENOTIFICATIONNUMBER"]
-           post_to_url(url, form_payload(hostName,hostState,hostOutput,notifyDateTime,notificationType,serviceDesc,serviceOutput,serviceState,source,hostNotifNumber,serviceNotifNumber))
+           hostAddress=os.environ["NOTIFY_HOSTADDRESS"]
+           post_to_url(url, form_payload(hostName,hostState,hostOutput,hostAddress,notifyDateTime,notificationType,serviceDesc,serviceOutput,serviceState,source,hostNotifNumber,serviceNotifNumber))
            print("Done.")
