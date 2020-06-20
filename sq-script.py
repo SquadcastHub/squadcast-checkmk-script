@@ -25,17 +25,30 @@ def post_to_url(url, payload):
 if __name__ == "__main__":
 
            print("Sending data to squadcast")
+           hostName=hostState=hostOutput=hostNotifNumber=notifyDateTime=notificationType=serviceDesc=serviceOutput=serviceState=serviceNotifNumber=""
            url=os.environ["NOTIFY_PARAMETER_1"]
            source=os.environ["NOTIFY_WHAT"]
-           hostName=os.environ["NOTIFY_HOSTNAME"]
-           hostState=os.environ["NOTIFY_HOSTSTATE"]
-           hostOutput=os.environ["NOTIFY_HOSTOUTPUT"]
-           hostNotifNumber=os.environ["NOTIFY_HOSTNOTIFICATIONNUMBER"]
-           notifyDateTime=os.environ["NOTIFY_SHORTDATETIME"]
-           notificationType=os.environ["NOTIFY_NOTIFICATIONTYPE"]
-           serviceDesc=os.environ["NOTIFY_SERVICEDESC"]
-           serviceOutput=os.environ["NOTIFY_SERVICEOUTPUT"]
-           serviceState=os.environ["NOTIFY_SERVICESTATE"]
-           serviceNotifNumber=os.environ["NOTIFY_SERVICENOTIFICATIONNUMBER"]
+           if source=="HOST":
+            hostName=os.environ["NOTIFY_HOSTNAME"]
+            hostAddress=os.environ["NOTIFY_HOSTADDRESS"]
+            hostState=os.environ["NOTIFY_HOSTSTATE"]
+            hostOutput=os.environ["NOTIFY_HOSTOUTPUT"]
+            hostNotifNumber=os.environ["NOTIFY_HOSTNOTIFICATIONNUMBER"]
+            notifyDateTime=os.environ["NOTIFY_SHORTDATETIME"]
+            notificationType=os.environ["NOTIFY_NOTIFICATIONTYPE"]
+            
+           else:
+            hostName=os.environ["NOTIFY_HOSTNAME"]
+            hostState=os.environ["NOTIFY_HOSTSTATE"]
+            hostOutput=os.environ["NOTIFY_HOSTOUTPUT"]
+            hostNotifNumber=os.environ["NOTIFY_HOSTNOTIFICATIONNUMBER"]
+            hostAddress=os.environ["NOTIFY_HOSTADDRESS"]
+            notifyDateTime=os.environ["NOTIFY_SHORTDATETIME"]
+            notificationType=os.environ["NOTIFY_NOTIFICATIONTYPE"]
+            serviceDesc=os.environ["NOTIFY_SERVICEDESC"]
+            serviceOutput=os.environ["NOTIFY_SERVICEOUTPUT"]
+            serviceState=os.environ["NOTIFY_SERVICESTATE"]
+            serviceNotifNumber=os.environ["NOTIFY_SERVICENOTIFICATIONNUMBER"]
+
            post_to_url(url, form_payload(hostName,hostState,hostOutput,notifyDateTime,notificationType,serviceDesc,serviceOutput,serviceState,source,hostNotifNumber,serviceNotifNumber))
            print("Done.")
