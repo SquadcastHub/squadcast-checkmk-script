@@ -15,9 +15,11 @@ def form_payload(hostName="", hostState="", hostOutput="", notifyDateTime="", no
 def post_to_url(url, payload):
 
     try:
-        req = urllib.request.Request(
-            url, data=bytes(json.dumps(payload), "utf-8"))
-        req.add_header("Content-Type", "application/json")
+        headers={
+        'User-Agent': 'squadcast',
+        "Content-Type": "application/json"
+        }
+        req = urllib.request.Request(url, data=bytes(json.dumps(payload),"utf-8"),headers=headers)
         resp = urllib.request.urlopen(req)
         if resp.status > 299:
             print("[sq-checkmk] Request failed with status code %s : %s" %
